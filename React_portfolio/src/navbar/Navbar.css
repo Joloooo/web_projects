@@ -1,0 +1,152 @@
+/* Navigation bar */
+#navbar {
+  position: relative;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+/* Wrapper for the Menu and About links to keep them left-aligned */
+#left-section {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Center section for site name and theme toggle */
+#navbar-center-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Style for navbar links */
+#navbar a {
+  color: var(--text-color);  /* Use dynamic text color */
+  text-decoration: none;     /* Remove underline */  
+  margin: 1vw;
+  padding: 5px;
+  font-weight: bold;  
+  font-size: 2.5vw;
+  border: none;
+}
+
+/* Style for buttons in the dropdown menu */
+#navbar-menu-items a {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--text-color);  
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.2em;
+  
+}
+
+/* Dropdown items for mobile view, hidden by default */
+#navbar-menu-items {
+  display: none;
+  position: absolute;
+  top: 60px; /* Position below the navbar */
+  left: 3px;
+  right: 0;
+  background-color: var(--bg-color);  
+  z-index: 1001;
+  width: fit-content;
+  
+  
+}
+
+#navbar-menu-items.active {
+  display: block;
+}
+
+
+/* Menu button for mobile, hidden by default */
+#navbar-menu-button {
+  display: none;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: none;  
+  font-size: 1.2vw;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styling for theme toggle button */
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5vw;
+  margin-left: 1vw;
+  padding: 8px;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:active {
+  transform: translateY(-5vw);
+  transition: transform 0.7s ease;
+}
+
+/* Media query for screens smaller than 1024px */
+@media (max-width: 1024px) {
+  /* Hide the left section */
+  #left-section {
+    display: none;
+  }
+
+
+  /* Show the menu button */
+  #navbar-menu-button {
+    display: block;
+    position: absolute;
+    left: 3vw;
+    order: 1;
+    margin-left: auto;
+  }
+
+  /* Adjust the center section and toggle button */
+  #navbar-center-section {
+    order: 2;
+    justify-content: center;
+    flex: 1;
+  }
+
+  #theme-toggle {
+    order: 2;
+    font-size: 8vw;
+  }
+
+  /* Show dropdown menu when active */
+  #navbar-menu-items.active {
+    display: block;
+  }
+
+  /* Adjust the site name font size */
+  #navbar-center-section #site-name {
+    font-size: 8vw;
+  }
+}

@@ -1,0 +1,562 @@
+.App {
+  text-align: center;
+}
+
+/* Ensure body doesn't overflow */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;  /* Prevent horizontal scrolling */
+}
+
+#particles canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Keep it behind other content */
+  overflow: hidden; /* Ensure no overflow */
+}
+
+#welcome-section {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+#welcome-section h1 {
+  font-size: 2.3vw;
+}
+
+
+
+
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Keeps particles behind the content */
+}
+
+/* ---------------------- Body light/ Body dark general themes ---------------------- */
+
+/* Define color variables for themes */
+body.light {
+  --text-color: #000000;
+  --bg-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+  --text-color: #f5f5f5;
+  --bg-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Apply background and text colors globally */
+body {
+  color: var(--text-color);
+}
+
+/* Containers with theme-specific background */
+.resume-container, .projects-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Navbar and site name colors */
+#site-name, h1, navbar a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* Hover states */
+#navbar a:hover, #navbar-menu-items a:hover, .projects-container a:hover {
+  background-color: var(--bg-color);
+}
+
+
+
+/* ---------------------- myProfile Stylin ---------------------- */
+.myProfile {
+  padding: 10px; /* Compact layout */
+  border-radius: 10px;
+  max-width: 60vw;
+  margin: 5vh auto;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 2vw;
+  display: flex;  
+  flex-direction: row; /* Default: Navbar on left, content on right */
+  box-sizing: border-box;
+}
+
+.myProfile-navbar {  
+  width: 30%; /* Take 30% of the space */
+  border-right: 2px solid var(--text-color);
+  overflow: hidden;  
+  box-sizing: border-box;
+}
+
+.myProfile-navbar button {
+  display: block; /* Stack buttons vertically */
+  width: 100%; /* Full width of the navbar */
+  padding: 10px;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.myProfile button {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 1% 0%;
+  font-size: 1.5vw;
+  padding: 1vw;
+  cursor: pointer;
+}
+
+.myProfile-input-div-password{
+  font-size: 1.5vw;
+}
+
+
+
+.myProfile > div:not(.myProfile-navbar, .loader) {
+  flex: 1; /* Take the remaining space */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.myProfile-content {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.myProfile h3 {
+  margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+}
+
+.myProfile div p input {
+  font-size: 1.5vw;
+  width: 70%;
+}
+
+.myProfile .myProfile-input-div-password p input{
+  width:55%;
+}
+
+
+
+.myProfile div p {
+  display: flex;
+  justify-content: space-between;
+  padding: 0% 0%;
+}
+
+.savebuttonDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.myProfile button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Add a hover effect */
+}
+
+.smallloader {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;
+  background: conic-gradient(var(--text-color), var(--bg-color), var(--text-color), var(--bg-color));
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: l13 2s linear infinite;
+}
+
+@keyframes l13 {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: var(--text-color) var(--bg-color);
+  animation: l16 1s infinite linear;
+  margin: auto;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.loader::before {
+  border-color: #f03355 var(--text-color);
+  animation: inherit;
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+
+.loader::after {
+  margin: 8px;
+}
+
+@keyframes l16 { 
+  100% { transform: rotate(1turn); }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  .myProfile {    
+    flex-direction: column; /* Stack items vertically */
+    font-size: 4vw;
+    width: 80vw;
+    margin: 0 0;
+    margin-left: 10%;    
+  }
+
+  .myProfile-navbar, .active-content, .myProfile-content  {
+    width: 100%;
+    border-right: none;  
+  }
+
+ 
+  .myProfile-navbar button { /* stuff for main navigation bar buttons  */
+    text-align: center;
+    font-size: 4vw;   
+    padding: 10px; 
+  }
+
+  .myProfile > div:not(.myProfile-navbar, .loader) {
+    display: none; /* Hide content by default */
+  }
+
+  .myProfile.show-content .myProfile-navbar {
+    display: none; /* Hide navbar when content is shown */
+  }
+
+  .myProfile.show-content .myProfile-content {
+    display: flex;
+    flex-direction: column; /* Stack content in a column */
+  }
+
+  .myProfile-content .back-button {   
+    font-size: 4vw;    
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    align-self: flex-start;
+  }
+
+  .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .myProfile-input-div p{
+    display:flex;
+    flex-direction: column;  
+  }
+  .myProfile-input-div p input{
+    width: 100% !important;
+    margin-top: 2vw;
+    font-size: 3vw !important;
+     
+  }
+
+  .saveButton{
+    font-size: 4vw !important;
+  }
+
+
+}
+
+
+
+
+
+/* ---------------------- Resume Stylin ---------------------- */
+.resume-container  {
+  padding: 10px; /* Reduced padding for compact layout */
+  border-radius: 10px;
+  max-width: 60vw;
+  margin: 20px auto; /* Reduced margin for compactness */
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+}
+
+
+.resume-container, #myProfile {
+  padding: 10px; /* Reduced padding for compact layout */
+  border-radius: 10px;
+  max-width: 60vw;
+  margin: 20px auto; /* Reduced margin for compactness */
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+}
+
+
+
+
+
+#firstLast{
+  text-align: center;
+  margin-bottom: 0.4vw;
+  margin-top:0vw
+}
+
+/* Compact HR */
+.resume-container hr {
+  margin: 0.4vw 10px; /* Reduced margin */
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+
+
+.resume-container *{
+ margin:0px; 
+}
+
+
+
+
+.contact-info h1{
+padding:0px;
+}
+
+
+/* Flexbox for Contact Info */
+.contact-info {
+  display: flex;
+  padding-top: 0px;
+  justify-content: space-between;  
+}
+
+.contact-info span {
+  margin-right: 5px; /* Reduced spacing */
+}
+
+.resume-container a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-container a:hover {
+  text-decoration: underline;
+}
+
+/* Flexbox for Education Dates */
+.education-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.education-item h4, .education-item p {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Small Line for Project Titles */
+.project-header {
+  display: flex;
+  align-items: center;
+}
+
+.project-header h4 {
+  margin-top: 1vw;
+  text-decoration: underline
+}
+
+
+.resume-container #experience h4, .resume-container #experience p{
+display:flex;
+justify-content: space-between;
+}
+
+
+
+/* ---------------------- PROJECTS STYLING ---------------------- */
+
+/* Projects Container Styling (same as resume-container) */
+.projects-container {
+  padding: 20px;
+  border-radius: 10px;
+  width:50vw;
+  max-width: 900px;
+  margin: 40px auto;
+  backdrop-filter: blur(10px); /* Adds a glass effect */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+  position: relative; /* Contain child elements */
+  display: flex;
+  flex-direction: column; /* Ensure the title and links are vertically aligned */
+  align-items: center; /* Center the content horizontally */
+  z-index: 1; /* Make sure it's above any other layers */
+  color: inherit; /* Ensure text inherits color based on theme */
+}
+
+
+
+/* Styling for Project Links */
+.projects-container h1 {
+  margin-bottom: 1vw;
+  border-bottom: 2px solid;
+  padding-bottom: 0.5vw;
+  width: 100%;
+  text-align: center;
+}
+
+.projects-container a {
+  display: block;
+  font-size: 1.2vw;
+  color: inherit; /* Inherit text color based on theme */
+  margin: 10px 0;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: auto; /* Allow the links to size naturally */
+  text-align: center; /* Center text inside the links */
+}
+
+/* Hover effect for project links */
+.projects-container a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+
+
+/* Remove button-like appearance from #projects */
+#projects {
+  background-color: transparent;
+  border: none; /* Remove border */
+  padding: 0; /* Remove any padding */
+  margin: 0;
+  text-align: inherit; /* Inherit text alignment */
+  color: inherit; /* Inherit color based on theme */
+  font: inherit; /* Inherit font properties */
+  cursor: pointer; /* Maintain cursor styling */
+}
+
+/* Ensure color changes for #home-link with the theme */
+#home-link {
+  color: var(--text-color); /* Dynamically set based on theme */
+  text-decoration: none; /* Ensure it doesn't get underlined */
+}
+
+
+#about-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+
+/* Styling for the site name */
+#site-name, #home-link, #about-link, #projects {
+  font-size: 2.5vw;
+  text-align: center;
+}
+
+#home-link, #about-link, #projects {
+padding: 0 1vw;;
+}
+
+
+/* Define the sliding animation */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateY(100%);  /* Start off-screen */
+    opacity: 0;                    /* Start with 0 opacity */
+  }
+  to {
+    transform: translateX(0);       /* End at the original position */
+    opacity: 1;                    /* Fully visible */
+  }
+}
+
+/* Apply the animation to welcome-section */
+.welcome-section, .projects-container, .resume-container, .myProfile {
+  animation: slideInFromLeft 1s ease-out;  /* 1s duration, ease-out timing function */
+}
+
+
+
+
+
+/* Media query for tablets (max-width: 768px) */
+@media (max-width: 1024px) {
+  /* Adjust font size and layout for the welcome section */
+  #welcome-section h1 {
+    font-size: 5vw; /* Smaller font size for tablets */
+  }
+
+  /* Adjust padding and layout for resume and projects containers */
+  .resume-container, .projects-container {
+    padding: 10px;  /* Adjust padding */
+    margin: 15px auto;  /* Adjust margin */
+    max-width: 80%;  /* Adjust width to fit the screen */
+    border-radius: 8px;  /* Adjust border radius */
+  }
+
+  /* Adjust font size in projects container */
+  .projects-container h1, .resume-container h1 {
+    font-size: 4.5vw; /* Adjust heading size */
+    padding-bottom: 10px;
+  }
+
+  /* Adjust project links */
+  .projects-container a, .resume-container a {
+    font-size: 3.5vw;  /* Smaller font size for project links */
+    padding: 10px 12px;
+    margin: 8px 0;
+  }
+
+  /* Navbar adjustments for mobile: combine Home, Projects, and About */
+  #navbar-menu-button {
+    display: block;  /* Show the menu button on mobile */
+    font-size: 4vw;
+  }
+
+  #navbar-menu-items {
+    display: none;  /* Hide the menu items initially */
+  }
+
+  /* Styling for when the menu is open */
+  #navbar-menu-button.active + #navbar-menu-items {
+    display: block;  /* Show the menu items when the menu is active */
+  }
+
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-info{
+    flex-direction: column;
+  }
+
+}
+
+
+
