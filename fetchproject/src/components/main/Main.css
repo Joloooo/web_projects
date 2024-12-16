@@ -1,0 +1,49 @@
+#mainDiv {
+    background-image: url(/public/burger.jpeg);
+    height: 80vh;             
+    width: 80vw;             
+    background-repeat: no-repeat;
+    background-size: cover;   
+    background-position: center; 
+    margin-top: -20vh;            
+}
+
+
+
+
+
+#mainDiv h1 {   
+    
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    margin: 0;
+}
+
+
+
+
+@media (max-width: 600px) {
+    #mainDiv {
+        height: 70vh;            
+
+    }
+    
+    
+    
+    
+    
+    #mainDiv h1 {
+        top: 40%;
+        left: 50%;
+
+    }
+   
+}
